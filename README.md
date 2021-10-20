@@ -27,7 +27,10 @@ library(stringr)
 library(wavClusteR)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(GenomicFeatures)
-YTHDF2_binding <- "./YTHDF2_binding.bam"
+reader_binding <- "./reader_binding.bam"
 obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
 ```
 #### *For eCLIP-seq or ICLIP-seq data*
+```bash
+if [ "$BLEG" != xxx ]; then command fi
+```
