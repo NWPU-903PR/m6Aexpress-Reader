@@ -68,13 +68,22 @@ reader_peak_overlap <- bindsites_overlap_peak(peak_sites_infor=peak_site_infor,m
 ```r
 reader_bindor_nobind_peak <- reader_peak_overlap$consis_peak_infor
 peaksites_filter <- bindornobind_gene_peakfilter(bind_nobindgene_peak=reader_bindor_nobind_peak,filter_reads_num=5)
+##binding sites overlapp to filtered peak sites with reader binding sites
+bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
+overlapped_bindsites <- reader_peak_overlap$binding_sites_overlap
+##reader binding sites from parclip-seq data
+bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=TRUE)
+##reader binding sites from eCLIP/iCLIP data
+bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=FALSE)
 ```
-### *Obtain the distance between peak and reader binding sites or stop codon
+### *Obtain the distance between peak and reader binding sites or stop codon*
 ```r
 ##Get peak center
 bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 nobindgene_peaksite <- peaksites_filter$nonbindgene_filter
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
+##Obtain the distance to binding sites (single base)
+
 
 ```
