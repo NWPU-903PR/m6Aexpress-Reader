@@ -32,5 +32,5 @@ obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotat
 ```
 #### *For eCLIP-seq or ICLIP-seq data*
 ```bash
-if [ "$BLEG" != xxx ]; then command fi
+
 ```
