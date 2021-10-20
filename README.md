@@ -32,5 +32,5 @@ obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotat
 ```
 #### *For eCLIP-seq or ICLIP-seq data*
 ```bash
-
+nohup pureclip -i /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_rep1.bam -i /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_rep2.bam -bai /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_rep1.bam.bai -bai /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_rep2.bam.bai  -g /home/disk1/zhangteng/iGenome/hg19/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa -o /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_eCLIP.bed -or /home/disk1/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_eCLIPbindingregion.bed -nt 30 &
 ```
