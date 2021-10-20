@@ -1,7 +1,6 @@
 # Usage Example
-## Step by Step Analysis
-### For two (case-control) conditions
-#### *Peak calling for methylation sites in case-control context*
+## In Treated VS Control context
+### *Peak calling for methylation sites in case-control context*
 ```r
 library(exomePeak)
 library(GenomicFeatures)
@@ -20,5 +19,13 @@ GENE_ANNO_GTF = "./hg19_GTF/genes.gtf"
 txdbfile <- GenomicFeatures::makeTxDbFromGFF(GENE_ANNO_GTF)
 txdb <- txdbfile
 result = exomepeak(TXDB=txdb, IP_BAM=IP_BAM, INPUT_BAM=INPUT_BAM, OUTPUT_DIR= "./exomePeak_calling/")
-
 ```
+### *Identify reader binding sites from CLIP-seq data*
+#### *For PAR-CLIP-seq data*
+library(stringr)
+library(wavClusteR)
+library(BSgenome.Hsapiens.UCSC.hg19)
+library(GenomicFeatures)
+YTHDF2_binding <- "./YTHDF2_binding.bam"
+obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
+#### *For eCLIP-seq or ICLIP-seq data*
