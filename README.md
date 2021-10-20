@@ -22,10 +22,12 @@ result = exomepeak(TXDB=txdb, IP_BAM=IP_BAM, INPUT_BAM=INPUT_BAM, OUTPUT_DIR= ".
 ```
 ### *Identify reader binding sites from CLIP-seq data*
 #### *For PAR-CLIP-seq data*
+```r
 library(stringr)
 library(wavClusteR)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(GenomicFeatures)
 YTHDF2_binding <- "./YTHDF2_binding.bam"
 obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
+```
 #### *For eCLIP-seq or ICLIP-seq data*
