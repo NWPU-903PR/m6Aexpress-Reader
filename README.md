@@ -19,6 +19,13 @@ GENE_ANNO_GTF = "./hg19_GTF/genes.gtf"
 txdbfile <- GenomicFeatures::makeTxDbFromGFF(GENE_ANNO_GTF)
 txdb <- txdbfile
 result = exomepeak(TXDB=txdb, IP_BAM=IP_BAM, INPUT_BAM=INPUT_BAM, OUTPUT_DIR= "./exomePeak_calling/")
+##obtain consistent peak sites information
+load("./exomePeak_calling/exomePeak_output/exomePeak.Rdata")
+peak_file <- tmp_rs
+consisten_peak <- "./exomePeak_calling/exomePeak_output/con_peak.bed"
+peak_site_infor <- peak_infor(peak_file, peak_bed=consisten_peak,con_peak=TRUE)
+##Mapping peak sites to the longest transcript 
+
 ```
 ### *Identify reader binding sites from CLIP-seq data*
 #### *For PAR-CLIP-seq data*
