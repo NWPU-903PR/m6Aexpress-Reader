@@ -91,6 +91,6 @@ bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_f
 bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
                                       annotation_file=GENE_ANNO_GTF,parclip=FALSE)
 ##Obtain the distance to stop codon                                
-
+nobind_gene_dist_stopcodon <- dist_stopcodon(target_peakcenter=nobindgene_peakcenter,annotation_file=GENE_ANNO_GTF)
 
 ```
