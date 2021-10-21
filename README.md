@@ -94,3 +94,9 @@ bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_f
 nobind_gene_dist_stopcodon <- dist_stopcodon(target_peakcenter=nobindgene_peakcenter,annotation_file=GENE_ANNO_GTF)
 
 ```
+### *Obtain the methylation level of reader binding gene or no binding gene*
+```r
+## No bind gene methylation level
+nobindgene_methylevel <- nobindgene_gene_methy_level_distdecay(methy_site_infor=nobindgene_peaksite,library_size=peak_site_infor[[2]],
+                                                               peak_dist_stopcodon=nobind_gene_dist_stopcodon)
+```
