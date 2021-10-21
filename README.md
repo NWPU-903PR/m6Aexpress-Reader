@@ -83,7 +83,14 @@ bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 nobindgene_peaksite <- peaksites_filter$nonbindgene_filter
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
-##Obtain the distance to binding sites (single base)
+##Obtain the min distance infor to binding sites (single base)
+###For PAR-CLIP-seq data
+bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
+                                      annotation_file=GENE_ANNO_GTF,parclip=TRUE)
+###For eCLIP/iCLIP data
+bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
+                                      annotation_file=GENE_ANNO_GTF,parclip=FALSE)
+##Obtain the distance to stop codon                                
 
 
 ```
