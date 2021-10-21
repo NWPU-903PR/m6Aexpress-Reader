@@ -97,7 +97,13 @@ nobind_gene_dist_stopcodon <- dist_stopcodon(target_peakcenter=nobindgene_peakce
 ```
 ### *Add binding signal stregnth for the bound peak sites*
 ```r
-
+##Add reader binding singal strength for bound peak sites and add the distance information to reader binding gene, whose peak without bingding
+bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
+bindgene_nobindpeak <- peaksites_filter$bindgene_nonbindpeak_filter
+add_binding_strength_dist <- add_peak_SNR(bindgene_bindpeak=bindgene_bindpeak,
+                                           bindgene_nobindpeak=bindgene_nobindpeak,
+                                           bindgene_nobind_peakdist_infor=bindgene_nobind_peakdist,
+                                           overlapped_bindsites=bindsites_overlap_filterpeak,parclip=TRUE)
 ```
 ### *Obtain the methylation level of reader binding gene or no binding gene*
 ```r
