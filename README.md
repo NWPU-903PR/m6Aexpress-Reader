@@ -137,3 +137,9 @@ DM_geneinfor <- obtain_DM_geneinfor(bindgene_methylevel=bindgene_methylevel,nobi
 candidate_gene_infor <- obtain_candidate_gene_infor(sig_DE_gene=DE_infor,sig_DM_gene=DM_geneinfor,output_path="./m6AexpressReader/")
 ```
 ### *Predicated m6A regulated expression gene by m6AexpressReader model*
+```r
+## Obtain the reader binding strength for reader binding gene
+gene_bind_strength <- bindgene_SNR(bindgene_peak_SNR_infor=add_binding_strength_dist)
+## Predicate the m6A-reg-exp gene by m6Aexpress-Reader model
+m6Aregexpgene_m6AexpressReader <- m6Aexpress_Reader_model()
+```
