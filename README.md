@@ -113,3 +113,26 @@ nobindgene_methylevel <- nobindgene_gene_methy_level_distdecay(methy_site_infor=
 ##bind gene methylation level
 bindgene_methylevel <- bindgene_methylevel (bindgene_peakSNR=add_binding_strength_dist,library_size=peak_site_infor[[2]])
 ```
+### *Obtain gene reads count and differential expression gene*
+```r
+library(Rsubread)
+library(DESeq2)
+##Obtian gene reads count
+f1 <- "./CTL_Input1.bam"
+f2 <- "./CTL_Input2.bam"
+f3 <- "./M3KD_Input1.bam"
+f4 <- "./M3KD_Input2.bam"
+Input_data <- c(f1,f2,f3,f4)
+gene_readscount <- obtain_gene_readscount(Input_data=Input_data,annotation_file=GENE_ANNO_GTF,isPairedEnd=F)
+##Obtain DE gene information
+DE_infor <- DE_analysis(gene_readscount=gene_readscount,con_name1="Control",con_name2="METTL3KD",num_con1=2,num_con2=2,p_value=0.05)
+```
+### *Obtain differential methylation gene*
+```r
+library(limma)
+DM_geneinfor <- obtain_DM_geneinfor(bindgene_methylevel=bindgene_methylevel,nobindgene_methylevel=nobindgene_methylevel,p_value=0.05,num_cond1=2,num_cond2=2)
+```
+### *Obtain candidate gene*
+```r
+
+```
