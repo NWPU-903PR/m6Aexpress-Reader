@@ -1,7 +1,3 @@
-library(stringr)
-library(wavClusteR)
-library(BSgenome.Hsapiens.UCSC.hg19)
-library(GenomicFeatures)
 parclip_reader_bindingsites <- function(par_bam,annotation_file){
   Bam <- readSortedBam(filename = par_bam)
   Bam <- readSortedBam(filename = DF2file )
