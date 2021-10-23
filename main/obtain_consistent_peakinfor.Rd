@@ -26,13 +26,9 @@ An IP sample is the aligned BAM file from the immunoprecipitated sample using RN
 The input control sample is the aligned BAM file from the total RNAseq shotgun sequencing.
 }
 \value{
-By default, \code{Get_peak_sites} will output results both 
-
-1. A folder named "exomePeak_output" by default included peaks and consist peaks BED/XLS files on diskunder the specified directory (default: current working directory) and a GRangesList object under the R environment, including information generated in the peak calling process can be accessed with the "mcols" command.
-2. A list object under current R environment, one includes the consistent peak sites information (e.g. "gene name","seqname","start","end","strand", reads count in each peak of each input samples), another included the libray sizes factor to normalize methylation level of each peak site in further analysis.
-}
-\references{
-Meng, Jia, Xiaodong Cui, Manjeet K. Rao, Yidong Chen, and Yufei Huang. "Exome-based analysis for RNA epigenome sequencing data." Bioinformatics 29, no. 12 (2013): 1565-1567.
+Results will return a list including the peak sites information in data.frame format and library sizes (total reads count in each sample) in vector format
+  \item{peak_sites_infor}{A dataframe including the consistent peak sites across two conditions}
+  \item{library_sizes}{A integer vector, which specifices the total reads count of each sample}
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -42,22 +38,10 @@ Meng, Jia, Xiaodong Cui, Manjeet K. Rao, Yidong Chen, and Yufei Huang. "Exome-ba
 }
 \examples{
 \dontrun{
-## Peak calling for case-control context
-f1 <- system.file("extdata", "IP1.bam", package="m6Aexpress")
-f2 <- system.file("extdata", "IP2.bam", package="m6Aexpress")
-f3 <- system.file("extdata", "IP3.bam", package="m6Aexpress")
-f4 <- system.file("extdata", "IP4.bam", package="m6Aexpress")
-f5 <- system.file("extdata", "Input1.bam", package="m6Aexpress")
-f6 <- system.file("extdata", "Input2.bam", package="m6Aexpress")
-f7 <- system.file("extdata", "Input3.bam", package="m6Aexpress")
-f8 <- system.file("extdata", "Input4.bam", package="m6Aexpress")
-IP_BAM <- c(f1,f2,f3,f4)
-INPUT_BAM <- c(f5,f6,f7,f8)
-
-# Input the annotation file
-gtf <- system.file("extdata", "hg19toy.gtf", package="m6Aexpress")
-# Get peak sites information
-Get_peak_infor <- Get_peakinfor(IP_BAM, INPUT_BAM,GENE_ANNO_GTF=gtf)
+load("./exomePeak_output/exomePeak.Rdata")
+peak_file <- tmp_rs
+consisten_peak <- "./exomePeak_output/con_peak.bed"
+peak_site_infor <- obtain_consistent_peakinfor(peak_file, peak_bed=consisten_peak)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
