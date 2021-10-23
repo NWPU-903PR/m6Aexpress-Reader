@@ -1,21 +1,20 @@
-Package: m6Aexpress
+Package: m6AexpressReader
 Type: Package
-Title: Predicting context-specific m6A regulation of gene expression
+Title: Predicting context-specific m6A regulation of gene expression combinding m6A reader binding information
 Version: 0.1.2
-Date: 2021-4-15
+Date: 2021-10-23
 Author: Teng Zhang
 Maintainer: Teng Zhang <tengzhang156@126.com>
-Description: The package is designed to predict the context-specific m6A methylation regulated expression gene
+Description: The package is designed to predict the context-specific m6A methylation regulated expression gene by combinding m6A reader binding information
 License: GPL-2
 Encoding: UTF-8
 BuildVignettes: yes
-Depends: exomePeak, QNB, DESeq2, DESeq, reshape2, gdata, reticulate, rtracklayer,stringr, 
-         org.Hs.eg.db, org.Mm.eg.db, Rsubread, TxDb.Hsapiens.UCSC.hg19.knownGene, 
-         TxDb.Mmusculus.UCSC.mm10.knownGene, readr, SummarizedExperiment, aod, 
-          ggplot2, grid, GenomicFeatures, GenomicRanges,AnnotationDbi, 
+Depends: exomePeak, DESeq2, reshape2, gdata, reticulate, rtracklayer,stringr, Rsubread, stringi,
+         readr, SummarizedExperiment, aod, writexl,m6ALogisticModel,BSgenome.Hsapiens.UCSC.hg19,
+          ggplot2, grid, GenomicFeatures, GenomicRanges,AnnotationDbi, wavClusteR,limma,
           GenomicAlignments,S4Vectors, scales
 Suggests: BiocStyle
 biocViews: Sequencing, Alignment, DataImport,RNASeq,MethylSeq, Transcription, Coverage
 NeedsCompilation: no
-Packaged: 2021-4-15 22:30:05 UTC; bioinfo
+Packaged: 2021-10-23 22:30:05 UTC; bioinfo
 RoxygenNote: 5.0.0
