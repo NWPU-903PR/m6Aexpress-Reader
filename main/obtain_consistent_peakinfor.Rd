@@ -1,8 +1,8 @@
-\name{Get_peakinfor}
-\alias{Get_peakinfor}
+\name{obtain_consistent_peakinfor}
+\alias{obtain_consistent_peakinfor}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Peak calling by exomePeak
+Obtain consistent peak sites information from exomePeak
 }
 \description{
 Peak calling and obtain the reads count for each m6A site using \code{exomePeak} R package.
