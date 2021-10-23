@@ -37,7 +37,7 @@ library(BSgenome.Hsapiens.UCSC.hg19)
 library(GenomicFeatures)
 library(m6ALogisticModel)
 YTHDF2_binding <- "./YTHDF2_binding.bam"
-obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
+obtain_reader_bindingsites <- parclip_reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
 ##map to the longest transcript
 bindsites_map_longestTX <- bindsites_maplong_tr(binding_sites=obtain_reader_bindingsites,annotation_file=GENE_ANNO_GTF,parclip=TRUE)
 ```
