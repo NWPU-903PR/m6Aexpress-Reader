@@ -23,7 +23,7 @@ result = exomepeak(TXDB=txdb, IP_BAM=IP_BAM, INPUT_BAM=INPUT_BAM, OUTPUT_DIR= ".
 ##obtain consistent peak sites information
 load("./exomePeak_output/exomePeak.Rdata")
 peak_file <- tmp_rs
-consisten_peak <- "./exomePeak_calling/exomePeak_output/con_peak.bed"
+consisten_peak <- "./exomePeak_output/con_peak.bed"
 peak_site_infor <- peak_infor(peak_file, peak_bed=consisten_peak,con_peak=TRUE)
 ##Mapping peak sites to the longest transcript 
 map_consist_peak_longTX <- map_peak_longTX(filepath=consisten_peak,annotation_file=GENE_ANNO_GTF)
@@ -36,7 +36,7 @@ library(wavClusteR)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(GenomicFeatures)
 library(m6ALogisticModel)
-reader_binding <- "./reader_binding.bam"
+YTHDF2_binding <- "./YTHDF2_binding.bam"
 obtain_reader_bindingsites <- reader_bindingsites(par_bam=YTHDF2_binding,annotation_file=GENE_ANNO_GTF)
 ##map to the longest transcript
 bindsites_map_longestTX <- bindsites_maplong_tr(binding_sites=obtain_reader_bindingsites,annotation_file=GENE_ANNO_GTF,parclip=TRUE)
@@ -83,7 +83,7 @@ bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 nobindgene_peaksite <- peaksites_filter$nonbindgene_filter
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
-##Obtain the min distance infor to binding sites (single base)
+##Obtain the min distance information to binding sites (single base)
 ###For PAR-CLIP-seq data
 bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
                                       annotation_file=GENE_ANNO_GTF,parclip=TRUE)
