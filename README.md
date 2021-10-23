@@ -24,7 +24,7 @@ result = exomepeak(TXDB=txdb, IP_BAM=IP_BAM, INPUT_BAM=INPUT_BAM, OUTPUT_DIR= ".
 load("./exomePeak_output/exomePeak.Rdata")
 peak_file <- tmp_rs
 consisten_peak <- "./exomePeak_output/con_peak.bed"
-peak_site_infor <- peak_infor(peak_file, peak_bed=consisten_peak,con_peak=TRUE)
+peak_site_infor <- peak_infor(peak_file, peak_bed=consisten_peak)
 ##Mapping peak sites to the longest transcript 
 map_consist_peak_longTX <- map_peak_longTX(filepath=consisten_peak,annotation_file=GENE_ANNO_GTF)
 ```
