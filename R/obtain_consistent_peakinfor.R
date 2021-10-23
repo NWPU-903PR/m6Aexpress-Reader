@@ -3,7 +3,7 @@ library(rtracklayer)
 library(AnnotationDbi)
 library(org.Hs.eg.db)
 
-peak_infor <- function(peak_file, peak_bed){
+obtain_consistent_peakinfor <- function(peak_file, peak_bed){
   read_peak <- import(peak_bed)
   read_peak <- as.data.frame(read_peak)
   peak_name <- as.character(read_peak$name)
