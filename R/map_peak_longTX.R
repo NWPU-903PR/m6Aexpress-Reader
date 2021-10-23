@@ -94,13 +94,3 @@ map_peak_longTX <- function(filepath,annotation_file){
   splicing_tx = data.frame(tx_id,exon_rank,exon_start,exon_end,cds_start,cds_end)
   return(splicing_tx)
 }
-##obtain longest TX
-##map peak to full transcrpt
-library(m6ALogisticModel)
-gtf <- "/home/disk1/zhangteng/hg19_GTF/genes.gtf"
-
-###select peak
-filepath <-"/home/disk1/zhangteng/BAM_file/HeLa_BAM_file/peak_callinganalysis/exomePeak_calling/exomePeak_output/con_peak.bed"
-
-consispeak_GR <- map_peak_longTX(filepath=filepath,annotation_file=GENE_ANNO_GTF)
-##mapped to the longest transcript 
