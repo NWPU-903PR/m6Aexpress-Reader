@@ -3,10 +3,11 @@ library(rtracklayer)
 library(AnnotationDbi)
 library(org.Hs.eg.db)
 
-peak_infor <- function(peak_file, peak_bed, con_peak){
+peak_infor <- function(peak_file, peak_bed){
   read_peak <- import(peak_bed)
   read_peak <- as.data.frame(read_peak)
   peak_name <- as.character(read_peak$name)
+  con_peak <- TRUE
   select_peak <-cbind( as.character(read_peak$seqnames), as.numeric(as.character(read_peak$start)), 
                        as.numeric(as.character(read_peak$end)),as.numeric(as.character(read_peak$width)),
                        as.character(read_peak$strand),peak_name)
