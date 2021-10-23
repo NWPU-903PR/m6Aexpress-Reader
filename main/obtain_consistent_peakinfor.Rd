@@ -5,52 +5,18 @@
 Obtain consistent peak sites information from exomePeak
 }
 \description{
-Peak calling and obtain the reads count for each m6A site using \code{exomePeak} R package.
+Obatin each peak sites information including peak sites range, reads count of each peak.
 }
 \usage{
-Get_peakinfor(IP_BAM, 
-               INPUT_BAM,
-               TREATED_IP_BAM=character(0),
-               TREATED_INPUT_BAM=character(0), 
-               species="human",
-               GENOME = NA, 
-               UCSC_TABLE_NAME = "knownGene", 
-               GENE_ANNO_GTF=NULL, 
-               TXDB=NA, 
-               OUTPUT_DIR= NA)
+obtain_consistent_peakinfor(peak_file, peak_bed)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
- \item{IP_BAM}{
-a character vector giving names of IP samples in MeRIP-seq data, which specifies a number of IP samples from the untreted/specific condition in alligned bam format.
+ \item{peak_file}{
+a Rdata format file including the peak sites information obtained from \code{exomePeak} R package.
 }
- \item{INPUT_BAM}{
-a character vector giving names of INPUT samples in MeRIP-seq data, which specifies a number of INPUT samples from the untreted/specific condition in alligned bam format.
-}
- \item{TREATED_IP_BAM}{
-a character vector giving names of treated IP samples in MeRIP-seq data, which specifies a number of IP samples from the treated condition in alligned bam format. These files are only provided in differential methylation context,default: character(0).
-}
- \item{TREATED_INPUT_BAM}{
-a character vector giving names of treated INPUT samples in MeRIP-seq data, which specifies a number of INPUT samples from the treated condition in alligned bam format. These files are only provided in differential methylation context, default: character(0).
-}
- \item{species}{
-a character string specifying the name of species, which could be \code{"human"} and \code{"mouse"}. This parameter is only appliable when \code{GENE_ANNO_GTF} is \code{NULL}.
-}
- \item{GENOME}{
-A string,such as "hg19" or "mm10", which specifies the genome assembly used. If a gene annotation file is provided, this function will not use it directly; otherwise, this function will download the gene annotation from UCSC using the genome assembly specified here and the gene annotation table specified in "UCSC_TABLE_NAME".
-}
- \item{UCSC_TABLE_NAME}{
-A string, which gives the gene annotation used from UCSC, default: "knownGene". Please use function: supportedUCSCtables() to check available tables.
-	Some tables may not be available for all genomes, and the "refGene" table does not work correctly due to multiple occuences of the same transcript on the same chromosome.
-}
- \item{GENE_ANNO_GTF}{
-A character string giving name of a user-provided annotation file in GTF format. Note that \code{GENE_ANNO_GTF} will override \code{annot_type} if both provided.
-}
- \item{TXDB}{
-An optional TxDb object for gene annotation information used in the analysis, default: NA. Please refere to "GenomicFeatures" package for more details about the "TxDb" object.
-}
- \item{OUTPUT_DIR}{
-A string, which specify the output directory, default: OUTPUT_DIR=NA, the output result will save in the current directory. Otherwise, \code{Get_peak_sites} will output specific dircetory.
+ \item{peak_bed}{
+a bed format file including the consistent peak sites range across two conditions obtained from \code{exomePeak} R package.
 }
 
 }
