@@ -22,8 +22,8 @@ A character string giving name of a user-provided annotation file in GTF format.
 
 \value{
 Results will return a list including the reader binding sites in signle base and reader binding cluster with reader binding strength
-  \item{high_confi_TC }{The high condifident T to C site, which denotes the reader binding site in single base}
-  \item{bind_cluster_infor }{reader binding cluster information, which include the reader binding strength}
+  \item{high_confi_TC }{The high condifident T to C site in GRange format, which denotes the reader binding site in single base}
+  \item{bind_cluster_infor }{reader binding cluster information in dataframe format, which include the reader binding strength}
 }
 \references{
 Sievers C, Schlumpf T, Sawarkar R, Comoglio F, Paro R (2012). "Mixture models and wavelet transforms reveal high confidence RNA-protein interaction sites in MOV10 PAR-CLIP data." 
