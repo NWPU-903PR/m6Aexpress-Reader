@@ -1,4 +1,3 @@
-library(Rsubread)
 obtain_gene_readscount <- function(Input_data,annotation_file,isPairedEnd=F){
   gene_count <- featureCounts(Input_data,isGTFAnnotationFile=TRUE,GTF.featureType="exon",GTF.attrType="gene_name", 
                               annot.ext = annotation_file, isPairedEnd=F)
