@@ -63,7 +63,7 @@ obtain_consistent_peakinfor <- function(peak_file, peak_bed){
   peak_site_reads <- cbind(select_peak, peak_reads_count, peak_report[,2:3])
   peak_site_reads <- peak_site_reads[which(!is.na(peak_site_reads$gene_name)), ]
   peak_site_infor <- list(peak_site_reads, totalreads)
-  names(peak_site_infor) <- c("peak_sites_infor","total_reads")
+  names(peak_site_infor) <- c("peak_sites_infor","library_size")
   return(peak_site_infor)
   
 }
