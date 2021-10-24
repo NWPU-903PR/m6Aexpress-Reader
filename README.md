@@ -60,30 +60,32 @@ bindsites_map_longestTX <- bindsites_maplong_tr(binding_sites=IGF2BPsbindingsite
 ### *Mapping reader binding sites to the consistent peak sites in the longest transcript*
 ```r
 ###mapping the binding sites from PAR-CLIP to the consistent peak sites
-reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
+reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,mapped_peak_GR=map_consist_peak_longTX,
                                               bind_sites=bindsites_map_longestTX,parclip=TRUE)
 ###mapping the binding sites from iCLIP/eCLIP to the consistent peak sites  
-reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
+reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,mapped_peak_GR=map_consist_peak_longTX,
                                               bind_sites=bindsites_map_longestTX,parclip=FALSE)
 ```
 ### *Obtain high condifident peak sites by remove lower reads count in peak sites, which are bind or no-bind by reader*
 ```r
-reader_bindor_nobind_peak <- reader_peak_overlap$consis_peak_infor
-peaksites_filter <- bindornobind_gene_peakfilter(bind_nobindgene_peak=reader_bindor_nobind_peak,filter_reads_num=5)
+#reader_bindor_nobind_peak <- reader_peak_overlap$consis_peak_infor
+#peaksites_filter <- bindornobind_gene_peakfilter(bind_nobindgene_peak=reader_bindor_nobind_peak,filter_reads_num=5)
 ##binding sites overlapp to filtered peak sites with reader binding sites
-bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
-overlapped_bindsites <- reader_peak_overlap$binding_sites_overlap
+#bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
+#overlapped_bindsites <- reader_peak_overlap$binding_sites_overlap
 ##reader binding sites from parclip-seq data
-bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=TRUE)
+#bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=TRUE)
 ##reader binding sites from eCLIP/iCLIP data
-bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=FALSE)
+#bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=FALSE)
 ```
 ### *Obtain the distance between peak and reader binding sites or stop codon*
 ```r
 ##Get peak center
-bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
+#bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
+bind_ornobind_gene <- reader_peak_overlap$consis_peak_infor
+bindgene_nonbind_peaksite <- bind_ornobind_gene$bindgene_nonbind_peak
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
-nobindgene_peaksite <- peaksites_filter$nonbindgene_filter
+nobindgene_peaksite <- bind_ornobind_gene$nonbindgene_peak
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 ##Obtain the min distance information to binding sites (single base)
 ###For PAR-CLIP-seq data
@@ -100,8 +102,8 @@ nobind_gene_dist_stopcodon <- dist_stopcodon(target_peakcenter=nobindgene_peakce
 ### *Add binding signal stregnth for the bound peak sites*
 ```r
 ##Add reader binding singal strength for bound peak sites and add the distance information to reader binding gene, whose peak without bingding
-bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
-bindgene_nobindpeak <- peaksites_filter$bindgene_nonbindpeak_filter
+bindgene_bindpeak <- bind_ornobind_gene$bindgene_bind_peak
+bindgene_nobindpeak <- bind_ornobind_gene$bindgene_nonbind_peak
 add_binding_strength_dist <- add_peak_SNR(bindgene_bindpeak=bindgene_bindpeak,
                                            bindgene_nobindpeak=bindgene_nobindpeak,
                                            bindgene_nobind_peakdist_infor=bindgene_nobind_peakdist,
