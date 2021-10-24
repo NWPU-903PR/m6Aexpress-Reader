@@ -25,8 +25,10 @@ load("./exomePeak_output/exomePeak.Rdata")
 peak_file <- tmp_rs
 consisten_peak <- "./exomePeak_output/con_peak.bed"
 peak_site_infor <- obtain_consistent_peakinfor(peak_file, peak_bed=consisten_peak)
+peak_site_filter <- peak_sites_filter(m6Asite_readsinfor=peak_site_infor,num_cond1=2,filter_reads_num=5)
 ##Mapping peak sites to the longest transcript 
-map_consist_peak_longTX <- map_peak_longTX(filepath=consisten_peak,annotation_file=GENE_ANNO_GTF)
+#map_consist_peak_longTX <- map_peak_longTX(filepath=consisten_peak,annotation_file=GENE_ANNO_GTF)
+map_consist_peak_longTX <- map_peak_longTX(filepath=consisten_peak,annotation_file=GENE_ANNO_GTF,peak_sites_infor=peak_site_filter)
 ```
 ### *Identify reader binding sites from CLIP-seq data*
 #### *For PAR-CLIP-seq data*
