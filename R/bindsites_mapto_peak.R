@@ -1,4 +1,4 @@
-map_bindingsites_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parclip=TRUE){
+bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parclip=TRUE){
   consis_peak_infor <- peak_sites_infor[[1]]
   map_peak_GR <- mapped_peak_GR[countOverlaps(mapped_peak_GR,mapped_peak_GR,type = "equal")==1]
   consis_GR <- GRanges(seqnames = as.character(consis_peak_infor$seqnames),
