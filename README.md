@@ -58,10 +58,10 @@ bindsites_map_longestTX <- bindsites_maplong_tr(binding_sites=IGF2BPsbindingsite
 ### *Mapping reader binding sites to the consistent peak sites in the longest transcript*
 ```r
 ###mapping the binding sites from PAR-CLIP to the consistent peak sites
-reader_peak_overlap <- bindsites_overlap_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
+reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
                                               bind_sites=bindsites_map_longestTX,parclip=TRUE)
 ###mapping the binding sites from iCLIP/eCLIP to the consistent peak sites  
-reader_peak_overlap <- bindsites_overlap_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
+reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_infor,mapped_peak_GR=map_consist_peak_longTX,
                                               bind_sites=bindsites_map_longestTX,parclip=FALSE)
 ```
 ### *Obtain high condifident peak sites by remove lower reads count in peak sites, which are bind or no-bind by reader*
