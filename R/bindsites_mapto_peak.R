@@ -1,5 +1,5 @@
 bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parclip=TRUE){
-  consis_peak_infor <- peak_sites_infor[[1]]
+  consis_peak_infor <- peak_sites_infor
   map_peak_GR <- mapped_peak_GR[countOverlaps(mapped_peak_GR,mapped_peak_GR,type = "equal")==1]
   consis_GR <- GRanges(seqnames = as.character(consis_peak_infor$seqnames),
                              IRanges(start = as.numeric(as.character(consis_peak_infor$start)),
@@ -19,7 +19,7 @@ bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parc
     if(length(consis_tr)>0){
       rm_label[i] <- 0
     }
-    one_peak <- consis_peak[consis_tr,]
+    one_peak <- consis_peak_infor[consis_tr,]
     # mcols(consis_peak_GR[i]) <- data.frame(mcols(consis_peak_GR[i]),gene_name=as.character(one_peak$gene_name))
     new_consis_peak <- rbind(new_consis_peak, one_peak)
   }
