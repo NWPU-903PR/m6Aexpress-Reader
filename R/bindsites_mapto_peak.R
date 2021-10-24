@@ -56,13 +56,13 @@ bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parc
     bindgene_nonoverlap_peak <- bindgene_allpeak[which(is.na(match(bindgene_allpeak$start,bindgene_overlap_peak$start))),]
     
     consis_peaksites_infor <- list(bindgene_overlap_peak,bindgene_nonoverlap_peak,nonbindgene_peak)
-    names(consis_peaksites_infor) <- c("bindgene_overlap_peak","bindgene_nonoverlap_peak","nonbindgene_peak")
+    names(consis_peaksites_infor) <- c("bindgene_bind_peak","bindgene_nonbind_peak","nonbindgene_peak")
     ##binding sites overlap peak infor
     bindcluster_overlap_infor <- list(highconfi_sub_overlap,select_cluster)
     names(bindcluster_overlap_infor) <- c("highconfi_overlap_TC","overlap_cluster")
     ##combine peak and reader binding sites
     bindingsites_peak_overlap <- list(bindcluster_overlap_infor,consis_peaksites_infor)
-    names(bindingsites_peak_overlap) <- c("binding_sites_overlap","consis_peak_infor")
+    names(bindingsites_peak_overlap) <- c("binding_sites_overlap","peak_infor")
     return(bindingsites_peak_overlap)
   }
   if(parclip==FALSE){
@@ -92,7 +92,7 @@ bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parc
     consis_peaksites_infor <- list(bindgene_overlap_peak,bindgene_nonoverlap_peak,nonbindgene_peak)
     names(consis_peaksites_infor) <- c("bindgene_overlap_peak","bindgene_nonoverlap_peak","nonbindgene_peak")
     bindingsites_peak_overlap <- list(bindsites_overlap,consis_peaksites_infor)
-    names(bindingsites_peak_overlap) <- c("binding_sites_overlap","consis_peak_infor")
+    names(bindingsites_peak_overlap) <- c("binding_sites_overlap","peak_infor")
     return(bindingsites_peak_overlap)
   }
 }
