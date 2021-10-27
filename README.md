@@ -113,7 +113,7 @@ bindgene_nobindpeak <- bind_ornobind_gene$bindgene_nonbind_peak
 add_binding_strength_dist <- add_peak_SNR(bindgene_bindpeak=bindgene_bindpeak,
                                            bindgene_nobindpeak=bindgene_nobindpeak,
                                            bindgene_nobind_peakdist_infor=bindgene_nobind_peakdist,
-                                           overlapped_bindsites=bindsites_overlap_filterpeak,parclip=TRUE)
+                                           overlapped_bindsites=bindsites_maptopeak,parclip=TRUE)
 ```
 ### *Obtain the methylation level of reader binding gene or no binding gene*
 ```r
