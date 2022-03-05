@@ -1,3 +1,15 @@
+# Installation Instructions
+The m6AexpressReader package is supported by R 3.5.3 or newer versions. First, you need to install the exomePeak package for m6A peak calling:
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c("Rsamtools","GenomicAlignments","GenomicRanges",
+                       "GenomicFeatures","rtracklayer","DESeq2","apeglm","RMariaDB"))
+                       
+install.packages("https://www.bioconductor.org/packages/3.8/bioc/src/contrib/exomePeak_2.16.0.tar.gz", repos = NULL, type="source")
+```
+Then user should install the waveClusteR 
 # Usage Example
 ## In Treated VS Control context
 ### *Peak calling for methylation sites in case-control context*
