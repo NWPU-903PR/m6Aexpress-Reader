@@ -1,5 +1,3 @@
-
-
 ##differential expression
 DE_analysis <- function(gene_readscount,con_name1,con_name2,num_con1,num_con2,p_value=0.05){
   colnames(gene_readscount)[2:ncol(gene_readscount)] <- c(paste0(con_name1,1:num_con1), paste0(con_name2,1:num_con2))
