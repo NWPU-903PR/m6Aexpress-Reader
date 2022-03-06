@@ -22,12 +22,6 @@ m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor
       match_count_methy <- rbind(match_count_methy,one_gene)
     }
     
-    match_methy <- data.frame()
-    for (i in 1:nrow(match_count_methy)) {
-      one_methy <- exprmethyre[exprmethyre$Gene_ID==as.character(match_count_methy$gene_name)[i],]
-      match_methy <- rbind(match_methy, one_methy)
-    }
-    
     ##match gene binding strength
     bindSNR <- vector()
     for (i in 1:nrow(match_count_methy)) {
@@ -112,7 +106,6 @@ m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor
       new_beta <- rbind(new_beta, one_data)
     }
     ##get loglike hood function of beta
-    gene_name <-as.character(match_methy$Gene_ID)
     adj_beta <- cbind(gene_name, new_beta)
     colnames(adj_beta) <- c("gene_name", "Beta0","Beta1","SE_Beta0","SE_Beat1", "pvalue")
     pvalues <- as.numeric(adj_beta$pvalue)
@@ -145,4 +138,3 @@ m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor
   }
   
 }
-
