@@ -1,13 +1,3 @@
-f1 <- "/home/disk3/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP1_eCLIP/IGF2BP1_eCLIP.bed"
-IGF2BP1_clipsite <- read.table(f1,header=F)
-colnames(IGF2BP1_clipsite) <- c("seqname","start","end","state","score","strand","all_score")
-IGF2BP1_clipsite <- IGF2BP1_clipsite[which(is.na(match(IGF2BP1_clipsite$seqname,"chrM"))),]
-f2 <- "/home/disk3/zhangteng/BAM_file/HepG2_BAMfile/IGF2BP3eCLIP_analysis/IGF2BP3.bed"
-IGF2BP3_clipsite <- read.table(f2,header = F)
-colnames(IGF2BP3_clipsite) <- c("seqname","start","end","state","score","strand","all_score")
-IGF2BP3_clipsite <- IGF2BP3_clipsite[which(is.na(match(IGF2BP3_clipsite$seqname,"chrM"))),]
-
-
 mergbinding_sites <- function(one_bindingsites, two_bindingsites){
   IGF2BP1_clipsite <- read.table(one_bindingsites,header=F)
   IGF2BP1_clipsite <- read.table(f1,header=F)
