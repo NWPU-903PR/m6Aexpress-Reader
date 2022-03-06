@@ -1,5 +1,4 @@
 ##obtain DM gene 
-
 obtain_DM_geneinfor <- function(bindgene_methylevel,nobindgene_methylevel,p_value=0.05,num_cond1,num_cond2){
   all_bind_gene_methyintensity <- bindgene_methylevel$onlybindgene_sites_methyintensity_weight
   part_bindgene_methyintensity <- bindgene_methylevel$bindgenesites_methyintensity_weight
