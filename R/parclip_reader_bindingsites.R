@@ -1,6 +1,5 @@
 parclip_reader_bindingsites <- function(par_bam,annotation_file){
   Bam <- readSortedBam(filename = par_bam)
-  Bam <- readSortedBam(filename = DF2file )
   tagmd <- Bam$tag.MD
   subtagmd <- sub("\\^","_",tagmd)
   str_replacestrs <- str_replace_all(subtagmd,"_",NA_character_)
