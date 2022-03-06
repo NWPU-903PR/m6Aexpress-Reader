@@ -108,20 +108,15 @@ reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,ma
 bind_ornobind_gene_peak <- reader_peak_overlap$peak_infor
 bindgene_nonbind_peaksite <- bind_ornobind_gene_peak$bindgene_nonbind_peak
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
-nobindgene_peaksite <- bind_ornobind_gene$nonbindgene_peak
+nobindgene_peaksite <- bind_ornobind_gene_peak$nonbindgene_peak
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 ##Obtain the min distance information to binding sites (single base)
 ###For PAR-CLIP-seq data
 bindsites_maptopeak <- reader_peak_overlap$binding_sites_overlap
-#bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
-                                      #annotation_file=GENE_ANNO_GTF,parclip=TRUE)
 
 bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_maptopeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
                                       annotation_file=GENE_ANNO_GTF,parclip=TRUE)
-###For eCLIP/iCLIP data
-#bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_overlap_filterpeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
-                                      #annotation_file=GENE_ANNO_GTF,parclip=FALSE)
-                                      
+###For eCLIP/iCLIP data                                      
 bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_maptopeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
                                       annotation_file=GENE_ANNO_GTF,parclip=FALSE)
 ##Obtain the distance to stop codon                                
