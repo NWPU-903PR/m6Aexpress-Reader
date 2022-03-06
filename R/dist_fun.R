@@ -1,5 +1,5 @@
 ##conversion TC sites
-targetTC_infor <- function(target_TC,parclip=TRUE){
+.targetTC_infor <- function(target_TC,parclip=TRUE){
   if(parclip==TRUE){
     targetTC_infor <-  data.frame(seqnames=as.character(target_TC@seqnames),
                                   start=as.numeric(as.character(target_TC@ranges)),
@@ -37,14 +37,14 @@ dist_fun <- function(overlap_bindsites_infor,bindgene_nobind_peakcenter,annotati
   if(parclip==TRUE){
     overlap_bindsites <- overlap_bindsites_infor[[1]]
     bind_cluster_overlap <- overlap_bindsites_infor[[2]]
-    bind_sites_data <- targetTC_infor(target_TC=overlap_bindsites,parclip=parclip)
+    bind_sites_data <- .targetTC_infor(target_TC=overlap_bindsites,parclip=parclip)
     bind_cluster_GR <- GRanges(seqnames = as.character(bind_cluster_overlap$seqnames),
                                IRanges(start = as.numeric(as.character(bind_cluster_overlap$start)),
                                        end = as.numeric(as.character(bind_cluster_overlap$end))),
                                strand = as.character(bind_cluster_overlap$strand))
   }
-  if(parclip==TRUE){
-    bind_sites_data <- targetTC_infor(target_TC=overlap_bindsites_infor,parclip=parclip)
+  if(parclip==FALSE){
+    bind_sites_data <- .targetTC_infor(target_TC=overlap_bindsites_infor,parclip=parclip)
   }
   target_sites_se <- GRanges(seqnames = as.character(bindgene_nobind_peakcenter$seqnames),
                              IRanges(start = as.numeric(as.character(bindgene_nobind_peakcenter$start)),
@@ -128,4 +128,3 @@ dist_fun <- function(overlap_bindsites_infor,bindgene_nobind_peakcenter,annotati
   }
   
 }
-
