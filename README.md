@@ -98,18 +98,6 @@ reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,ma
 reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,mapped_peak_GR=map_consist_peak_longTX,
                                               bind_sites=bindsites_map_longestTX,parclip=FALSE)
 ```
-### *Obtain high condifident peak sites by remove lower reads count in peak sites, which are bind or no-bind by reader*
-```r
-#reader_bindor_nobind_peak <- reader_peak_overlap$consis_peak_infor
-#peaksites_filter <- bindornobind_gene_peakfilter(bind_nobindgene_peak=reader_bindor_nobind_peak,filter_reads_num=5)
-##binding sites overlapp to filtered peak sites with reader binding sites
-#bindgene_bindpeak <- peaksites_filter$bindgene_bindpeak_filter
-#overlapped_bindsites <- reader_peak_overlap$binding_sites_overlap
-##reader binding sites from parclip-seq data
-#bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=TRUE)
-##reader binding sites from eCLIP/iCLIP data
-#bindsites_overlap_filterpeak <- mapped_filterpeak_bindsites(overlap_bind_sites=overlapped_bindsites,bindsites_peak=bindgene_bindpeak,parclip=FALSE)
-```
 ### *Obtain the distance between peak and reader binding sites or stop codon*
 ```r
 ##Get peak center
