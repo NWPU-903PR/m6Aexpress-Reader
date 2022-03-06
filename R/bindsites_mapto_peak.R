@@ -90,7 +90,7 @@ bindsites_mapto_peak <- function(peak_sites_infor,mapped_peak_GR,bind_sites,parc
                                                                    bindgene_overlap_peak$start))),]
     
     consis_peaksites_infor <- list(bindgene_overlap_peak,bindgene_nonoverlap_peak,nonbindgene_peak)
-    names(consis_peaksites_infor) <- c("bindgene_overlap_peak","bindgene_nonoverlap_peak","nonbindgene_peak")
+    names(consis_peaksites_infor) <- c("bindgene_bind_peak","bindgene_nonbind_peak","nonbindgene_peak")
     bindingsites_peak_overlap <- list(bindsites_overlap,consis_peaksites_infor)
     names(bindingsites_peak_overlap) <- c("binding_sites_overlap","peak_infor")
     return(bindingsites_peak_overlap)
