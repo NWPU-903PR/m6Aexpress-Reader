@@ -186,5 +186,7 @@ candidate_gene_infor <- obtain_candidate_gene_infor(sig_DE_gene=DE_infor,sig_DM_
 ## Obtain the reader binding strength for reader binding gene
 gene_bind_strength <- bindgene_SNR(bindgene_peak_SNR_infor=add_binding_strength_dist)
 ## Predicate the m6A-reg-exp gene by m6Aexpress-Reader model
-m6Aregexpgene_m6AexpressReader <- m6Aexpress_Reader_model()
+m6Aregexpgene_m6AexpressReader <- m6Aexpress_Reader_model(candidate_gene_infor=candidate_gene_infor,
+                                                          bindgene_strength_infor=gene_bind_strength,
+                                                          CUTOFF_TYPE=pvalue,pvalue=0.05,out_dir="./m6AexpressReader_result/")
 ```
