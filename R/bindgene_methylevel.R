@@ -1,5 +1,5 @@
 #########quantify methylation lelvel 
-peak_methy_level <- function(IP_Input_read,size_factor){
+.peak_methy_level <- function(IP_Input_read,size_factor){
   IP_site_read <- IP_Input_read[,grep("IP",colnames(IP_Input_read))]
   Input_site_read <- IP_Input_read[,(grep("Input",colnames(IP_Input_read)))]
   IP_Input <- cbind(IP_site_read, Input_site_read)
@@ -19,9 +19,9 @@ peak_methy_level <- function(IP_Input_read,size_factor){
   return(methy_level_infor)
 }
 
-weight_methy_level <- function(methy_site_infor,library_size,add_dist=T){
+.weight_methy_level <- function(methy_site_infor,library_size,add_dist=T){
   size_factor <- as.numeric(library_size/exp(mean(log(library_size))))
-  norm_methy_level <- peak_methy_level(methy_site_infor,size_factor)
+  norm_methy_level <- .peak_methy_level(methy_site_infor,size_factor)
   norm_methy_level <- na.omit(norm_methy_level)
   # distdecay <- exp(-as.numeric(as.character(norm_methy_level$norm_pos)))
   table_genename <- as.data.frame(table(as.character(norm_methy_level$gene_name)))
@@ -85,9 +85,9 @@ bindgene_methylevel <- function(bindgene_peakSNR,library_size){
   
   
   
-  weightedpeak_genemethy_intensity_onlybindgene_sites <- weight_methy_level(methy_site_infor=bindgene_bindallpeak_SNR,library_size=library_size,add_dist=F)
-  weightedpeak_genemethy_intensity_bindgene_nobind_sites_dist <- weight_methy_level(methy_site_infor=select_bindgene_nobind_adddist,library_size=library_size,add_dist=T)
-  weightedpeak_genemethy_intensity_bindgene_bindother_sites <- weight_methy_level(methy_site_infor=select_bindgene_distsites_SNR,library_size=library_size,add_dist=F)
+  weightedpeak_genemethy_intensity_onlybindgene_sites <- .weight_methy_level(methy_site_infor=bindgene_bindallpeak_SNR,library_size=library_size,add_dist=F)
+  weightedpeak_genemethy_intensity_bindgene_nobind_sites_dist <- .weight_methy_level(methy_site_infor=select_bindgene_nobind_adddist,library_size=library_size,add_dist=T)
+  weightedpeak_genemethy_intensity_bindgene_bindother_sites <- .weight_methy_level(methy_site_infor=select_bindgene_distsites_SNR,library_size=library_size,add_dist=F)
   ######DFbind DM sites gene methylation intensity
   combine_genename <- intersect(weightedpeak_genemethy_intensity_bindgene_nobind_sites_dist$gene_name,weightedpeak_genemethy_intensity_bindgene_bindother_sites$gene_name)
   bindgenesites_genemethyintensity <- data.frame()
@@ -101,4 +101,3 @@ bindgene_methylevel <- function(bindgene_peakSNR,library_size){
   names(bindgene_weightedmethyintensity) <- c("onlybindgene_sites_methyintensity_weight","bindgenesites_methyintensity_weight")
   return(bindgene_weightedmethyintensity)
 }
-
