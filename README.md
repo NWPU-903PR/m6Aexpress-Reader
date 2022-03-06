@@ -9,13 +9,17 @@ BiocManager::install(c("Rsamtools","GenomicAlignments","GenomicRanges",
                        
 install.packages("https://www.bioconductor.org/packages/3.8/bioc/src/contrib/exomePeak_2.16.0.tar.gz", repos = NULL, type="source")
 ```
-Then user should install the *waveClusteR* R package, which is used to predict YTHDF2 binding sites in PAR-CLIP data:
+## Then user should install the *waveClusteR* R package, which is used to predict YTHDF2 binding sites in PAR-CLIP data:
 ```r
 BiocManager::install("wavClusteR")
 ```
-For IGF2BP1/3 eCLIP data, user should install *PureCLIP* software
+## For IGF2BP1/3 eCLIP data, user should install *PureCLIP* software
 ```r
 conda install -c bioconda pureclip
+```
+# To obtain the longest transcript, user shoul install *m6ALogisticModel* R package
+```r
+devtools::install_github("ZhenWei10/m6ALogisticModel")
 ```
 # Usage Example
 ## In Treated VS Control context
