@@ -84,11 +84,3 @@ findpeakcenter <- function(targetpeaks,annotation_file,maplongtx_peak){
   }
   return(targetpeak_center)
 }
-
-
-bindgene_nobindDMsites_peakcenter <- findpeakcenter(targetpeaks=bind_nobindDMsitesGRList,txdbfiles=exbytx_txdb)
-nobindgene_DMsites_peakcenter <- findpeakcenter(targetpeaks=nobindgene_DMsitesGRList,txdbfiles=exbytx_txdb)
-
-nobind_DMsites_peakcenter <- list(bindgene_nobindDMsites_peakcenter,nobindgene_DMsites_peakcenter)
-names(nobind_DMsites_peakcenter) <- c("bindgene_nobindDMsites_peakcenter","nobindgene_DMsites_peakcenter")
-save(nobind_DMsites_peakcenter,file = "/home/disk3/zhangteng/BAM_file/HepG2_BAMfile/m6Aexpress_IGF2BP13/data/nobind_DMsites_peakcenter.Rdata")
