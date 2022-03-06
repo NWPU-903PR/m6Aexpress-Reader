@@ -1,4 +1,4 @@
-m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor,CUTOFF_TYPE,pvalue, FDR,out_dir=NA){
+m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor,CUTOFF_TYPE="pvalue",pvalue, FDR,out_dir=NA){
   py_code <- system.file("extdata", "R_runpython.py", package = "m6AexpressReader")
   source_python(py_code)
   fileNameCount=candidate_gene_infor$gene_countmety_path
@@ -111,6 +111,7 @@ m6Aexpress_Reader_model <- function(candidate_gene_infor,bindgene_strength_infor
     pvalues <- as.numeric(adj_beta$pvalue)
     padj <- p.adjust(pvalues, method = "BH")
     padj_beta <- cbind(adj_beta, padj)
+	padj_beta <- padj_beta[,-c(4,5)]
     m6Aregexp_addDEDM_infor <- data.frame()
     DEDM_gene_infor <- readxl::read_xlsx(candidate_gene_infor$DEDM_infor_path)
     overlap_gene <- intersect(padj_beta$gene_name,DEDM_gene_infor$gene_name)
