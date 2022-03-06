@@ -1,16 +1,4 @@
-##load binding SNR infor and dist 
-load("/home/disk3/zhangteng/BAM_file/HepG2_BAMfile/m6Aexpress_IGF2BP13/data/bindgene_SNRinfor_nobind_adddistinfor.Rdata")
-onlybindgene_bindsites_SNR <- bindgene_SNRinfor_nobind_adddist$onlybindgene_bindsites_addSNRinfor
-bindgene_distsites_SNR <- bindgene_SNRinfor_nobind_adddist$bindgene_distsites_addSNRinfor
-bindgene_nobind_adddist <- bindgene_SNRinfor_nobind_adddist$bindgene_nobind_adddist
-bindgene_bindpeak_nobindpeak_genename <- intersect(bindgene_distsites_SNR$gene_name,bindgene_nobind_adddist$gene_name)
-select_bindgene_distsites_SNR <- bindgene_distsites_SNR[which(!is.na(match(bindgene_distsites_SNR$gene_name,bindgene_bindpeak_nobindpeak_genename))),]
-select_bindgene_nobind_adddist <- bindgene_nobind_adddist[which(!is.na(match(bindgene_nobind_adddist$gene_name,bindgene_bindpeak_nobindpeak_genename))),]
-another_allbindgene_SNR <- bindgene_distsites_SNR[which(is.na(match(bindgene_distsites_SNR$gene_name,
-                                                                    bindgene_bindpeak_nobindpeak_genename))),]
-bindgene_bindallpeak_SNR <- rbind(onlybindgene_bindsites_SNR,another_allbindgene_SNR)
 #########quantify methylation lelvel 
-
 peak_methy_level <- function(IP_Input_read,size_factor){
   IP_site_read <- IP_Input_read[,grep("IP",colnames(IP_Input_read))]
   Input_site_read <- IP_Input_read[,(grep("Input",colnames(IP_Input_read)))]
