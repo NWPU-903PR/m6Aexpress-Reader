@@ -104,9 +104,9 @@ reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,ma
 ### *Obtain the distance between peak and reader binding sites or stop codon*
 ```r
 ##Get peak center
-#bindgene_nonbind_peaksite <- peaksites_filter$bindgene_nonbindpeak_filter
-bind_ornobind_gene <- reader_peak_overlap$peak_infor
-bindgene_nonbind_peaksite <- bind_ornobind_gene$bindgene_nonbind_peak
+##obtain peak sites 
+bind_ornobind_gene_peak <- reader_peak_overlap$peak_infor
+bindgene_nonbind_peaksite <- bind_ornobind_gene_peak$bindgene_nonbind_peak
 bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 nobindgene_peaksite <- bind_ornobind_gene$nonbindgene_peak
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
