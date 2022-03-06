@@ -1,6 +1,6 @@
 ##peak sites map to transcrpt
 
-map_peak_longTX <- function(filepath,annotation_file){
+map_peak_longTX <- function(filepath,annotation_file,peak_sites_infor){
   ##obtain the longest transcript
   txdbfile <- GenomicFeatures::makeTxDbFromGFF(annotation_file)
   genes_txdb <- genes(txdbfile)
@@ -27,7 +27,10 @@ map_peak_longTX <- function(filepath,annotation_file){
   last_select_label <- as.numeric(as.character(select_peaks$xHits))
   # mcols_info =a[,13:length(a[1,])]
   a = a[last_select_label,1:12]
-  
+  #############
+  start_overlap_label <- which(!is.na(match(((a$V2)+1),peak_sites_infor$start)))
+  a = a[start_overlap_label,]
+  #################
   # get transcripts
   no_tx = length(a[,1])
   tx_id = 1:no_tx;
@@ -94,3 +97,12 @@ map_peak_longTX <- function(filepath,annotation_file){
   splicing_tx = data.frame(tx_id,exon_rank,exon_start,exon_end,cds_start,cds_end)
   return(splicing_tx)
 }
+##obtain longest TX
+##map peak to full transcrpt
+library(m6ALogisticModel)
+gtf <- "/home/disk3/zhangteng/hg19_GTF/genes.gtf"
+
+###select peak
+filepath <- "/home/disk3/zhangteng/BAM_file/HepG2_BAMfile/HepG2_M3KD_V2/peak_calling/exomePeak_output/con_peak.bed"
+consispeak_GR <- map_peak_longTX(filepath=filepath,annotation_file=gtf,peak_sites_infor=all_peak_filter)
+##mapped to the longest transcript 
