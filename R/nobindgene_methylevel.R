@@ -1,4 +1,4 @@
-peak_methy_level <- function(IP_Input_read,size_factor){
+.peak_methy_level <- function(IP_Input_read,size_factor){
 
   IP_site_read <- IP_Input_read[,grep("IP",colnames(IP_Input_read))]
   Input_site_read <- IP_Input_read[,(grep("Input",colnames(IP_Input_read)))]
@@ -19,9 +19,7 @@ peak_methy_level <- function(IP_Input_read,size_factor){
   return(methy_level_infor)
 }
 
-
-
-nobindgene_gene_methy_level_distdecay <- function(methy_site_infor,library_size,peak_dist_stopcodon){
+nobindgene_methylevel <- function(methy_site_infor,library_size,peak_dist_stopcodon){
   size_factor <- as.numeric(library_size/exp(mean(log(library_size))))
   nonbindgene_peak_GR <- GRanges(seqnames = as.character(methy_site_infor$seqnames),
                                           IRanges(start = as.numeric(as.character(methy_site_infor$start)),
@@ -43,7 +41,7 @@ nobindgene_gene_methy_level_distdecay <- function(methy_site_infor,library_size,
   }
   colnames(select_peaksites)[ncol(select_peaksites)] <- "dist_stopcodon"
 
-  norm_methy_level <- peak_methy_level(methy_site_infor,size_factor)
+  norm_methy_level <- .peak_methy_level(methy_site_infor,size_factor)
   norm_methy_level <- na.omit(norm_methy_level)
   dist <- as.numeric(as.character(norm_methy_level$dist_stopcodon))
   distdecay <- exp(-dist/round(quantile(dist,0.75)))
@@ -76,4 +74,3 @@ nobindgene_gene_methy_level_distdecay <- function(methy_site_infor,library_size,
   last_genedecaylevel <- last_selectdecaylevel[select_label, ]
   return(last_genedecaylevel)
 }
-
