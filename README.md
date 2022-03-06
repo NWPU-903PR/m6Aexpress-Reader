@@ -143,11 +143,11 @@ add_binding_strength_dist <- add_peak_SNR(bindgene_bindpeak=bindgene_bindpeak,
 ```
 ### *Obtain the methylation level of reader binding gene or no binding gene*
 ```r
-## No bind gene methylation level
-nobindgene_methylevel <- nobindgene_gene_methy_level_distdecay(methy_site_infor=nobindgene_peaksite,library_size=peak_site_infor[[2]],
+##No bind gene methylation level
+nobindgene_methylevel <- nobindgene_methylevel(methy_site_infor=nobindgene_peaksite,library_size=peak_site_infor[[2]],
                                                                peak_dist_stopcodon=nobind_gene_dist_stopcodon)
 ##bind gene methylation level
-bindgene_methylevel <- bindgene_methylevel (bindgene_peakSNR=add_binding_strength_dist,library_size=peak_site_infor[[2]])
+bindgene_methylevel <- bindgene_methylevel(bindgene_peakSNR=add_binding_strength_dist,library_size=peak_site_infor[[2]])
 ```
 ### *Obtain gene reads count and differential expression gene*
 ```r
