@@ -107,13 +107,15 @@ reader_peak_overlap <- bindsites_mapto_peak(peak_sites_infor=peak_site_filter,ma
 ##obtain peak sites 
 bind_ornobind_gene_peak <- reader_peak_overlap$peak_infor
 bindgene_nonbind_peaksite <- bind_ornobind_gene_peak$bindgene_nonbind_peak
-bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
 nobindgene_peaksite <- bind_ornobind_gene_peak$nonbindgene_peak
+##peak center for binding gene without bind sites peak
+bindgene_nobindsite_peakcenter <- findpeakcenter(targetpeaks=bindgene_nonbind_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
+##peak center for no binding sites genes
 nobindgene_peakcenter <- findpeakcenter(targetpeaks=nobindgene_peaksite,annotation_file=GENE_ANNO_GTF,maplongtx_peak=bindsites_map_longestTX)
+##binding sites mapped to peak 
+bindsites_maptopeak <- reader_peak_overlap$binding_sites_overlap
 ##Obtain the min distance information to binding sites (single base)
 ###For PAR-CLIP-seq data
-bindsites_maptopeak <- reader_peak_overlap$binding_sites_overlap
-
 bindgene_nobind_peakdist <- dist_fun(overlap_bindsites_infor=bindsites_maptopeak,bindgene_nobind_peakcenter=bindgene_nobindsite_peakcenter,
                                       annotation_file=GENE_ANNO_GTF,parclip=TRUE)
 ###For eCLIP/iCLIP data                                      
